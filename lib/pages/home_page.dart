@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/usuarios_seguidos_widget.dart';
 
 class HomePage extends StatefulWidget {
   static const route = '/home';
@@ -39,12 +40,17 @@ class _HomePageState extends State<HomePage>
           labelColor: Theme.of(context).primaryColor,
           labelStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
           unselectedLabelStyle: TextStyle(fontSize: 15.0),
-          
           tabs: [
             Tab(text: 'Populares'),
             Tab(text: 'Mais recentes'),
           ],
         ),
+      ),
+      body: ListView(
+        physics: BouncingScrollPhysics(),
+        children: [
+          UsuariosSeguidosWidget(),
+        ],
       ),
     );
   }
