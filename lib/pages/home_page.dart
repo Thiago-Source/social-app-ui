@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:social_media/data/data.dart';
+import 'package:social_media/widgets/posts_carousel.dart';
 import '../widgets/usuarios_seguidos_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,10 +15,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
+  PageController? _pageController;
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    _pageController = PageController(
+      initialPage: 0,
+      viewportFraction: 0.8,
+    );
   }
 
   @override
@@ -50,6 +57,8 @@ class _HomePageState extends State<HomePage>
         physics: BouncingScrollPhysics(),
         children: [
           UsuariosSeguidosWidget(),
+          PostsCarousel(
+              pageController: _pageController!, title: 'Posts', posts: posts),
         ],
       ),
     );
