@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:social_media/pages/home_page.dart';
 import 'package:social_media/widgets/curve_clipper.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
+  static const route = '/login';
   const LoginPage({Key? key}) : super(key: key);
 
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -65,7 +62,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: 40.0),
               GestureDetector(
-                onTap: () {},
+                onTap: () =>
+                    Navigator.pushReplacementNamed(context, HomePage.route,),
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 60.0),
                   alignment: Alignment.center,
