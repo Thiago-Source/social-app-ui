@@ -4,6 +4,7 @@ class User {
   final String? profileImageUrl;
   final String? backgroundImageUrl;
   final String? name;
+  final String? email;
   final int? following;
   final int? followers;
   final List<Post>? posts;
@@ -12,6 +13,7 @@ class User {
   User({
     this.profileImageUrl,
     this.backgroundImageUrl,
+    this.email,
     this.name,
     this.following,
     this.followers,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/data/data.dart';
 import 'package:social_media/widgets/posts_carousel.dart';
+import 'package:social_media/widgets/navigation_drawer_widget.dart';
 import '../widgets/usuarios_seguidos_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
   PageController? _pageController;
+
   @override
   void initState() {
     super.initState();
@@ -29,6 +31,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawerWidget(),
       appBar: AppBar(
         backgroundColor: Colors.white,
         brightness: Brightness.dark,

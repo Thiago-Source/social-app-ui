@@ -73,4 +73,5 @@ final User currentUser = User(
   followers: 937,
   posts: _yourPosts,
   favorites: _yourFavorites,
+  email: 'currentuser@gmail.com',
 );
