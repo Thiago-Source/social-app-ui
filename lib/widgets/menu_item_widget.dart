@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 class MenuItemWidget extends StatelessWidget {
   final String text;
   final IconData icon;
-  Widget? trailing;
+  final VoidCallback onTap;
+  final Widget? trailing;
 
-  MenuItemWidget({required this.icon, required this.text, this.trailing});
+  MenuItemWidget(
+      {required this.icon,
+      required this.text,
+      this.trailing,
+      required this.onTap});
 
   static const color = Colors.blue;
 
@@ -23,7 +28,7 @@ class MenuItemWidget extends StatelessWidget {
       ),
       hoverColor: hoverColor,
       focusColor: hoverColor,
-      onTap: () {},
+      onTap: onTap,
     );
   }
 }
