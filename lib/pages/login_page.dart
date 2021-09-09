@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:social_media/pages/home_page.dart';
 import 'package:social_media/widgets/curve_clipper.dart';
 
+import '../text_themes.dart';
+
 class LoginPage extends StatelessWidget {
   static const route = '/login';
   const LoginPage({Key? key}) : super(key: key);
@@ -28,12 +30,7 @@ class LoginPage extends StatelessWidget {
               ),
               Text(
                 'SOCIAL APP',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 34.0,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.0,
-                ),
+                style: TextStyles.mainTitle,
               ),
               SizedBox(height: 10.0),
               Padding(
@@ -62,8 +59,10 @@ class LoginPage extends StatelessWidget {
               ),
               SizedBox(height: 40.0),
               GestureDetector(
-                onTap: () =>
-                    Navigator.pushReplacementNamed(context, HomePage.route,),
+                onTap: () => Navigator.pushReplacementNamed(
+                  context,
+                  HomePage.route,
+                ),
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 60.0),
                   alignment: Alignment.center,
@@ -74,11 +73,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   child: Text(
                     'Login',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1.5),
+                    style: TextStyles.buttonTextPrimary,
                   ),
                 ),
               ),
@@ -98,18 +93,11 @@ class LoginPage extends StatelessWidget {
                       child: RichText(
                         text: TextSpan(
                           text: 'Don\'t have an account? ',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w400),
+                          style: TextStyles.dialogText,
                           children: [
                             TextSpan(
                               text: 'Sign up',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                                color: Theme.of(context).primaryColor,
-                              ),
+                              style: TextStyles.captionText,
                             ),
                           ],
                         ),

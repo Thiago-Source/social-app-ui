@@ -3,6 +3,7 @@ import 'package:social_media/data/data.dart';
 import 'package:social_media/widgets/posts_carousel.dart';
 import 'package:social_media/widgets/navigation_drawer_widget.dart';
 import '../widgets/usuarios_seguidos_widget.dart';
+import '../text_themes.dart';
 
 class HomePage extends StatefulWidget {
   static const route = '/home';
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage>
           controller: _tabController,
           labelColor: Theme.of(context).primaryColor,
           labelStyle: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
-          unselectedLabelStyle: TextStyle(fontSize: 15.0),
+          unselectedLabelStyle: TextStyles.labelText,
           tabs: [
             Tab(text: 'Populares'),
             Tab(text: 'Mais recentes'),

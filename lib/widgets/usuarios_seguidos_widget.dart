@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/data/data.dart';
 import 'package:social_media/models/user_model.dart';
+import '../text_themes.dart';
 
 class UsuariosSeguidosWidget extends StatelessWidget {
   const UsuariosSeguidosWidget({Key? key}) : super(key: key);
@@ -14,11 +15,7 @@ class UsuariosSeguidosWidget extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
           child: Text(
             'Seguindo',
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 2.0,
-            ),
+            style: TextStyles.labelText2,
           ),
         ),
         Container(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/models/post_model.dart';
-
+import '../text_themes.dart';
 import 'post_widget.dart';
 
 class PostsCarousel extends StatelessWidget {
@@ -29,11 +29,7 @@ class PostsCarousel extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
           child: Text(
             title,
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 2.0,
-            ),
+            style: TextStyles.labelText2,
           ),
         ),
         Container(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:social_media/models/user_model.dart';
-
+import 'package:social_media/text_themes.dart';
 import 'package:social_media/widgets/navigation_drawer_widget.dart';
 import 'package:social_media/widgets/posts_carousel.dart';
 import 'package:social_media/widgets/profile_header_widget.dart';
+import 'package:social_media/widgets/profile_info_widget.dart';
 
 class ProfilePage extends StatefulWidget {
   static const route = 'Profile';
@@ -33,86 +34,54 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       drawer: NavigationDrawerWidget(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ProfileHeaderWidget(
+      body: CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        slivers: [
+          SliverAppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            expandedHeight: 250,
+            floating: true,
+            collapsedHeight: 130,
+            toolbarHeight: 80,
+            stretch: true,
+            snap: true,
+            flexibleSpace: ProfileHeaderWidget(
               widget: widget,
             ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Text(
-                widget.user.name!,
-                style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.5),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, _) {
+                return Column(
                   children: [
-                    Text(
-                      'Seguindo',
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 20.0,
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        widget.user.name!,
+                        style: TextStyles.profileText,
                       ),
                     ),
-                    SizedBox(height: 2.0),
-                    Text(
-                      widget.user.following!.toString(),
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w600,
-                      ),
+                    ProfileInfoWidget(
+                      widget: widget,
                     ),
+                    PostsCarousel(
+                        pageController: _postsPageController!,
+                        posts: widget.user.posts!,
+                        title: 'Seus posts'),
+                    PostsCarousel(
+                        pageController: _favPostsPageController!,
+                        posts: widget.user.favorites!,
+                        title: 'Favoritos'),
+                    SizedBox(height: 50),
                   ],
-                ),
-                Container(
-                  width: 1,
-                  height: 60,
-                  color: Colors.black12,
-                ),
-                Column(
-                  children: [
-                    Text(
-                      'Seguindo',
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                    SizedBox(height: 2.0),
-                    Text(
-                      widget.user.followers!.toString(),
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                );
+              },
+              childCount: 1,
             ),
-            PostsCarousel(
-                pageController: _postsPageController!,
-                posts: widget.user.posts!,
-                title: 'Seus posts'),
-            PostsCarousel(
-                pageController: _favPostsPageController!,
-                posts: widget.user.favorites!,
-                title: 'Favoritos'),
-            SizedBox(height: 50),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
